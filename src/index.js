@@ -1,6 +1,6 @@
 window.onload = function(){
   getWeekFormData()
-  // getAllWeeksFormData()
+  buttonLogic()
   addAllEventListeners()
 }
 
@@ -21,20 +21,21 @@ function addAllEventListeners(){
       console.log('div', ev.target.innerText);
     }
   })
+
+  document.getElementById(`btn-prev`).addEventListener('click', function (){
+    Week.fetchByWeek(getWeekOnPage() - 1)
+  })
+  document.getElementById(`btn-next`).addEventListener('click', function (){
+    Week.fetchByWeek(getWeekOnPage() + 1)
+  })
+
 }
 
 function getCurrentWeek(){
-  const week = Math.floor((((Date.now() - new Date("September 5, 2017"))/1000)/(60*60*24)/7))+1
+  // const week = Math.floor((((Date.now() - new Date("September 5, 2017"))/1000)/(60*60*24)/7))+1
+  const week = 7
   document.getElementById(`week-header`).innerText = `Week #${week}`
   return week
-}
-
-function getAllWeeksFormData(){
-  fetch(`http://localhost:3000/api/v1/weeks/`)
-  .then(res => res.json())
-  .then(json => {
-    populateForm(json.data[0].attributes.games)
-  })
 }
 
 function getWeekFormData(){
@@ -42,15 +43,8 @@ function getWeekFormData(){
   fetch(`http://localhost:3000/api/v1/weeks/${week}`)
   .then(res => res.json())
   .then(json => {
-    populateForm(json.data.attributes.games)
-  })
-}
-
-
-function populateForm(games){
-  games.forEach(game => {
-    newGame = new Game(game)
-    newGame.render()
+    const week = Week.findOrCreateByObj(json.data.attributes)
+    week.renderForm()
   })
 }
 
@@ -61,4 +55,21 @@ function colorByTeam(ev){
     child.style.background = 'none'
   })
   div.style.background = color
+}
+
+function getWeekOnPage(){
+  return +document.getElementById(`week-header`).innerText.match(/\d+$/)[0]
+}
+
+function buttonLogic(){
+  const week = getWeekOnPage()
+  const next = document.getElementById(`btn-next`)
+  next.disabled = false
+  const prev = document.getElementById(`btn-prev`)
+  prev.disabled = false
+  if(week === 17){
+    next.disabled = true
+  } else if (week === 1) {
+    prev.disabled = true
+  }
 }

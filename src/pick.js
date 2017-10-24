@@ -1,6 +1,7 @@
 class Pick {
   constructor(field) {
-    this.game_id = +field.id.slice(-1)
+    const reg = new RegExp(/\d+$/)
+    this.game_id = +field.id.match(reg)[0]
     this.guess_id = +Array.from(field.children).filter(div => div.children[1].checked === true)[0].children[1].value
   }
 
