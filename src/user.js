@@ -1,9 +1,12 @@
 class User {
-  constructor() {
+  constructor(id, name = "Al") {
+    document.getElementById('pick-form').reset()
     Pick.all = []
     this.constructor.all = []
-    this.id = 1 //hard coded
+    this.id = id
+    this.name = name
     this.picks = []
+    this.setCurrentUserOnPage()
     this.populateUserPicks()
     this.constructor.all.push(this)
   }
@@ -21,9 +24,15 @@ class User {
     })
   }
 
+  static clearAllBackgrounds(){
+    const form = getForm()
+    Array.from(form.children).forEach(field => Array.from(field.children).forEach(div => div.style.background = 'none'))
+  }
+
   //Fills in forms with user's picks
   activateChoices(){
     const weekPicks = this.getPicksByWeek()
+
     weekPicks.forEach(pick => {
       const fieldset = document.getElementById(`field_game_${pick.gameId}`)
       const div = this.findDivToActivate(fieldset, pick.guessId)
@@ -34,6 +43,7 @@ class User {
     })
   }
 
+  //searches each field for the correct div to activate
   findDivToActivate(fieldset, guess){
     return Array.from(fieldset.children).filter(div => +div.children[1].value === guess)[0]
   }
@@ -81,6 +91,7 @@ class User {
 
   setCurrentUserOnPage(){
     document.getElementById(`user-id`).innerText = this.id
+    document.getElementById(`header`).innerText = this.name
   }
 
   static getCurrentUser(){
@@ -94,9 +105,38 @@ class User {
   static findById(id){
     return this.all.find(user => user.id === id)
   }
+
+  static login(){
+    const field = document.getElementById(`user-name`)
+    const name = field.value
+    field.value = ""
+    fetch(`http://localhost:3000/api/v1/usersby/${name}`)
+    .then(res => res.json())
+    .then(json => this.userLogin(json))
+  }
+
+  static userLogin(json){
+    this.clearAllBackgrounds()
+    const user = new User(+json.data.id, json.data.attributes.name)
+    Week.fetchByWeek(getWeekOnPage())
+  }
+
+  static signUp(){
+    const name = JSON.stringify(document.getElementById(`new-name`).value)
+    fetch(`http://localhost:3000/api/v1/users`,
+    {
+      method: 'post',
+      headers: {
+        "Content-Type": 'application/json',
+        Accepts: "application/json"
+      },
+      body: name
+    })
+    .then(res => res.json())
+    .then(json => this.userLogin(json))
+  }
 }
 
 
   User.all = []
-  const user = new User ()
-  user.setCurrentUserOnPage()
+  const user = new User(1)

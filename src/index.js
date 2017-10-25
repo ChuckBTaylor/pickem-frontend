@@ -34,6 +34,16 @@ function addAllEventListeners(){
     Week.fetchByWeek(getWeekOnPage())
   })
 
+  document.getElementById(`login-form`).addEventListener('submit', function(ev){
+    ev.preventDefault()
+    User.login()
+  })
+
+  document.getElementById(`sign-up-form`).addEventListener('submit', function(ev){
+    ev.preventDefault()
+    User.signUp()
+  })
+
 }
 
 function getStartDate(){
@@ -91,4 +101,8 @@ function buttonLogic(){
   } else if (week === 1) {
     prev.disabled = true
   }
+}
+
+function getForm(){
+  return document.getElementById('pick-form')
 }
