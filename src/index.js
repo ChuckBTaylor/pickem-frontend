@@ -1,4 +1,5 @@
 window.onload = function(){
+  setWeekOnPage(getCurrentWeek())
   getWeekFormData()
   buttonLogic()
   addAllEventListeners()
@@ -9,7 +10,8 @@ function addAllEventListeners(){
   const form = document.getElementById('pick-form')
   form.addEventListener(`submit`, function(ev){
     ev.preventDefault()
-    Pick.generatePicks(Array.from(ev.target).filter(field => field.nodeName === "FIELDSET"))
+    User.getUserObject().generatePicks(Array.from(ev.target).filter(field => field.nodeName === "FIELDSET"))
+    // Pick.generatePicks(Array.from(ev.target).filter(field => field.nodeName === "FIELDSET"))
   })
 
   form.addEventListener('change', function(ev){
@@ -23,19 +25,36 @@ function addAllEventListeners(){
   })
 
   document.getElementById(`btn-prev`).addEventListener('click', function (){
-    Week.fetchByWeek(getWeekOnPage() - 1)
+    setWeekOnPage(getWeekOnPage()-1)
+    Week.fetchByWeek(getWeekOnPage())
   })
+
   document.getElementById(`btn-next`).addEventListener('click', function (){
-    Week.fetchByWeek(getWeekOnPage() + 1)
+    setWeekOnPage(getWeekOnPage() + 1)
+    Week.fetchByWeek(getWeekOnPage())
   })
 
 }
 
-function getCurrentWeek(){
-  // const week = Math.floor((((Date.now() - new Date("September 5, 2017"))/1000)/(60*60*24)/7))+1
-  const week = 7
+function getStartDate(){
+  return new Date("2017, September, 5")
+}
+
+function getTimeFromStartToNowInMiliseconds(){
+  return Date.now() - getStartDate()
+}
+
+function getFirstGameDate(){
+  return new Date(2017, 08, 07, 20, 15)
+}
+
+function setWeekOnPage(week){
   document.getElementById(`week-header`).innerText = `Week #${week}`
-  return week
+}
+
+function getCurrentWeek(){
+  return Math.floor(((getTimeFromStartToNowInMiliseconds()/1000)/(60*60*24))/7)+1
+  // return 9
 }
 
 function getWeekFormData(){

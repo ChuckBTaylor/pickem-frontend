@@ -2,17 +2,38 @@ class Week {
   constructor(weekObj) {
     this.weekNumber = weekObj['week-number']
     this.games = weekObj.games
+    this.id = weekObj.id
 
     this.constructor.all.push(this)
   }
 
   renderForm(){
-    const form = document.getElementById(`pick-form`).innerHTML = `<input type='submit'>`
+    const form = document.getElementById(`pick-form`)
+    form.innerHTML = ""
+    this.renderSubmit(form)
+
+
     this.games.forEach(game => {
       const newGame = new Game(game)
       newGame.render()
     })
 
+  }
+
+  renderSubmit(form){
+    if(this.renderSubmitLogic()){
+      form.innerHTML = `<input type="submit">`
+    }
+  }
+
+  renderSubmitLogic(){
+    let thursday = getFirstGameDate()
+    thursday.setDate(thursday.getDate()+(7*(this.weekNumber-1)))
+    if (Date.now() < thursday) {
+      return true
+    } else {
+      return false
+    }
   }
 
   alterPage(){
@@ -36,8 +57,8 @@ class Week {
     .then(res => res.json())
     .then(json => {
       const week = this.findOrCreateByObj(json.data.attributes)
-      week.renderForm()
       week.alterPage()
+      week.renderForm()
       buttonLogic()
       User.getUserObject().activateChoices()
 
