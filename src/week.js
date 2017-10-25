@@ -60,8 +60,6 @@ class Week {
       week.alterPage()
       week.renderForm()
       buttonLogic()
-      User.getUserObject().activateChoices()
-
     })
   }
 

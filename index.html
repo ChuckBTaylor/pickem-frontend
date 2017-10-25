@@ -6,7 +6,19 @@
   </head>
   <body>
     <div class="">
+      <form class="" id='sign-up-form' method="get">
+        <label for="new-name">To sign-up, enter name:</label>
+        <input type="text" name="" value="" id='new-name'>
+        <input type="submit">
+      </form>
+    </div>
+    <div class="">
       <h1 id='header'>Username</h1>
+      <form class="" id='login-form' method="get">
+        <label for="user-name">To login, enter name:</label>
+        <input type="text" name="" value="" id='user-name'>
+        <input type="submit">
+      </form>
       <h2 id='week-header'>Week #</h2>
       <div class="btn-holder" id='btn-holder'>
         <button type="button" name="button" id='btn-prev'>Previous Week</button>
@@ -17,7 +29,8 @@
       <form class="" action="" method="" id='pick-form'>
       </form>
     </div>
-    <p hidden id='user-id'>1</p>
+
+    <p hidden id='user-id'></p>
     <script src='src/team.js'></script>
     <script src='src/game.js'></script>
     <script src='src/pick.js'></script>

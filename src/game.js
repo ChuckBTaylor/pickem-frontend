@@ -18,7 +18,7 @@ class Game {
       <label for="team_${this.homeTeam.id}"></label>
       <input type='radio' name="radio_game_${this.id}" value="${this.homeTeam.id}" id="team_${this.homeTeam.id}">${this.homeTeam.name}</input>
       </div>`
-      
+
     form.prepend(game)
   }
 }
