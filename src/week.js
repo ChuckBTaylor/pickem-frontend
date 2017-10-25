@@ -11,14 +11,14 @@ class Week {
     const form = document.getElementById(`pick-form`)
     form.innerHTML = ""
     this.renderSubmit(form)
-
-
     this.games.forEach(game => {
       const newGame = new Game(game)
       newGame.render()
     })
-
+    User.getUserObject().activateChoices()
   }
+
+
 
   renderSubmit(form){
     if(this.renderSubmitLogic()){
