@@ -1,0 +1,35 @@
+body {
+  background-image: url('images/background.jpeg');
+  color: white
+}
+
+#pick-form {
+  margin: auto;
+  text-align: center;
+  width: 50%;
+}
+
+div{
+  text-align: center;
+}
+
+.form-team{
+  font-size: 1.5em
+}
+
+.home-team{
+  text-align: right;
+}
+
+.away-team{
+  text-align: left;
+}
+
+
+.terranceButton {
+  background: url(images/tButton.png);
+  cursor:pointer;
+  border:none;
+  width:100px;
+  height:141px;
+}
