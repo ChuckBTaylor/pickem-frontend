@@ -1,13 +1,14 @@
 class User {
-  constructor(id, name = "Al") {
+  constructor(id, attributes = {}) {
     document.getElementById('pick-form').reset()
     Pick.all = []
     this.constructor.all = []
     this.id = id
-    this.name = name
+    this.wins = attributes.wins || "No Wins"
+    this.name = attributes.name || "Really wrong"
     this.picks = []
-    this.setCurrentUserOnPage()
     this.populateUserPicks()
+    this.setCurrentUserOnPage()
     this.constructor.all.push(this)
   }
 
@@ -21,6 +22,9 @@ class User {
         newPick.userId = this.id
         this.picks.push(newPick)
       })
+      let percent = (this.wins / this.picks.length).toFixed(3)
+
+      document.getElementById(`win-percentage`).innerText = `Win Percentage: ${percent}%`
     })
   }
 
@@ -92,6 +96,7 @@ class User {
   setCurrentUserOnPage(){
     document.getElementById(`user-id`).innerText = this.id
     document.getElementById(`header`).innerText = this.name
+    document.getElementById(`win-counter`).innerHTML = `Win count: ${this.wins}`
   }
 
   static getCurrentUser(){
@@ -112,12 +117,12 @@ class User {
     field.value = ""
     fetch(`http://localhost:3000/api/v1/usersby/${name}`)
     .then(res => res.json())
-    .then(json => this.userLogin(json))
+    .then(json => this.userLogin(json.data))
   }
 
   static userLogin(json){
     this.clearAllBackgrounds()
-    const user = new User(+json.data.id, json.data.attributes.name)
+    const user = new User(+json.id, json.attributes)
     Week.fetchByWeek(getWeekOnPage())
   }
 
@@ -139,4 +144,6 @@ class User {
 
 
   User.all = []
-  const user = new User(1)
+  fetch(`http://localhost:3000/api/v1/usersby/Al`)
+  .then(res => res.json())
+  .then(json => User.userLogin(json.data))

@@ -90,6 +90,10 @@ function getWeekOnPage(){
   return +document.getElementById(`week-header`).innerText.match(/\d+$/)[0]
 }
 
+function weekIsOver(){
+  const week = getWeekOnPage()
+}
+
 function buttonLogic(){
   const week = getWeekOnPage()
   const next = document.getElementById(`btn-next`)
