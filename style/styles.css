@@ -169,3 +169,7 @@ div{
   display: inline-block;
   text-align: justify;
 }
+
+.radio-form{
+  visibility: hidden;
+}
