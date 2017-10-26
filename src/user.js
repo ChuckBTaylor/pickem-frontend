@@ -138,7 +138,7 @@ class User {
       body: name
     })
     .then(res => res.json())
-    .then(json => this.userLogin(json))
+    .then(json => this.userLogin(json.data))
   }
 }
 

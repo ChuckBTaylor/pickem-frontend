@@ -15,12 +15,14 @@ function addAllEventListeners(){
   })
 
   form.addEventListener('change', function(ev){
+    ev.preventDefault()
     colorByTeam(ev)
   })
 
   form.addEventListener('click', function(ev){
     if (ev.target.nodeName === "DIV"){
-      console.log('div', ev.target.innerText);
+      divClickChangeEvent(ev)
+
     }
   })
 
@@ -109,4 +111,12 @@ function buttonLogic(){
 
 function getForm(){
   return document.getElementById('pick-form')
+}
+
+function divClickChangeEvent(ev){
+  const inp = ev.target.querySelector('input')
+  inp.checked = true
+  const event = document.createEvent('HTMLEvents');
+  event.initEvent('change', true, false);
+  inp.dispatchEvent(event)
 }
