@@ -23,8 +23,8 @@ class Week {
 
 
   renderSubmit(form){
-    if(this.rend
-      form.innerHTML = `<input type="submit" class='terranceButton'>`
+    if(this.renderSubmitLogic()){
+      form.innerHTML = `<input type="submit" class="terranceButton">`
     }
   }
 
@@ -55,9 +55,11 @@ class Week {
   }
 
   static fetchByWeek(weekNumber){
+    console.log(weekNumber);
     fetch(`http://localhost:3000/api/v1/weeks/${weekNumber}`)
     .then(res => res.json())
     .then(json => {
+      console.log(json.data);
       const week = this.findOrCreateByObj(json.data.attributes)
       week.alterPage()
       week.renderForm()
