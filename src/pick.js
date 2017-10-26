@@ -16,5 +16,4 @@ class Pick {
 }
 
 
-
 // Array.from(f.children).filter(div => div.children[1].checked === true)[0].children[1].value
