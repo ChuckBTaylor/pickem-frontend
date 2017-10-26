@@ -23,7 +23,7 @@ class Week {
 
 
   renderSubmit(form){
-    if(this.renderSubmitLogic()){
+    if(this.rend
       form.innerHTML = `<input type="submit" class='terranceButton'>`
     }
   }

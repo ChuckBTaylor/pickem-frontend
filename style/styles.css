@@ -1,0 +1,122 @@
+body {
+   background-image: url(teal.jpeg);
+   color: white;
+   font-family: monospace;
+   font-size: 2.3em;
+}
+
+.input {
+   text-align: center;
+}
+
+#pick-form {
+  margin: auto;
+  text-align: center;
+}
+
+div{
+  text-align: center;
+}
+
+.home-team {
+  text-align: right;
+}
+
+.away-team {
+  text-align: left;
+}
+
+.previous {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.previous span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.previous span:after {
+  content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+
+.previous:hover span {
+  padding-left: 25px;
+}
+
+.previous:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+
+.next {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.next span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.next span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.next:hover span {
+  padding-right: 25px;
+}
+
+.next:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.pick-submit {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}

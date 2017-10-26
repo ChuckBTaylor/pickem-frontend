@@ -10,7 +10,8 @@ class Game {
     const form = document.getElementById(`pick-form`)
     const game = document.createElement('fieldset')
     game.id = `field_game_${this.id}`
-    game.className = `matchup-field`
+
+    game.className = `matchup-box`
     game.innerHTML = `
       <div class="away-team form-team">
       <label for="team_${this.awayTeam.id}" ></label>
