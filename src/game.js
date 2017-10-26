@@ -10,11 +10,12 @@ class Game {
     const form = document.getElementById(`pick-form`)
     const game = document.createElement('fieldset')
     game.id = `field_game_${this.id}`
+    game.className = 'matchup-box'
     game.innerHTML = `
-      <div>
+      <div class="away-team">
       <label for="team_${this.awayTeam.id}" ></label>
       <input type='radio' name="radio_game_${this.id}" value="${this.awayTeam.id}" id="team_${this.awayTeam.id}">${this.awayTeam.name}</input>
-      </div><div>
+      </div><div class="home-team">
       <label for="team_${this.homeTeam.id}"></label>
       <input type='radio' name="radio_game_${this.id}" value="${this.homeTeam.id}" id="team_${this.homeTeam.id}">${this.homeTeam.name}</input>
       </div>`

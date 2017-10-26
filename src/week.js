@@ -22,7 +22,7 @@ class Week {
 
   renderSubmit(form){
     if(this.renderSubmitLogic()){
-      form.innerHTML = `<input type="submit">`
+      form.innerHTML = `<input class="pick-submit" type="submit">`
     }
   }
 

@@ -2,30 +2,32 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>NFL Pick'Em</title>
+    <link rel="stylesheet" type="text/css" href="style/styles.css">
   </head>
   <body>
-    <div class="">
-      <form class="" id='sign-up-form' method="get">
-        <label for="new-name">To sign-up, enter name:</label>
-        <input type="text" name="" value="" id='new-name'>
-        <input type="submit">
-      </form>
-    </div>
-    <div class="">
-      <h1 id='header'>Username</h1>
-      <form class="" id='login-form' method="get">
+    <div class="w3-container">
+      <h1>Welcome!</h1>
+      <form class="input" id='login-form' method="get">
         <label for="user-name">To login, enter name:</label>
         <input type="text" name="" value="" id='user-name'>
         <input type="submit">
       </form>
+    </div>
+      <form class="input" id='sign-up-form' method="get">
+        <label for="new-name">To sign-up, enter name:</label>
+        <input type="text" name="" value="" id='new-name'>
+        <input type="submit">
+      </form>
+    <div class="">
+      <h1 id='header'>Username</h1>
       <h2 id='week-header'>Week #</h2>
       <div class="btn-holder" id='btn-holder'>
-        <button type="button" name="button" id='btn-prev'>Previous Week</button>
-        <button type="button" name="button" id='btn-next'>Next Week</button>
+        <button class="previous" style="vertical-align:middle" type="button" name="button" id='btn-prev'><span>Previous Week </span></button>
+        <button class="next" style="vertical-align:middle" type="button" name="button" id='btn-next'><span>Next Week </span></button>
       </div>
     </div>
-    <div class="">
+    <div class="pick-div">
       <form class="" action="" method="" id='pick-form'>
       </form>
     </div>
