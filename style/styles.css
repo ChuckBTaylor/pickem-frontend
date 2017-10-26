@@ -3,6 +3,7 @@ body {
    color: white;
    font-family: monospace;
    font-size: 2.3em;
+   background-attachment: fixed;
 }
 
 .input {
@@ -128,6 +129,15 @@ div{
   width:100px;
   height:142px;
   font-size: 0;
+  animation-name: rotate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
 }
 
 .login {
@@ -177,5 +187,4 @@ div{
 div.winning-team{
   border: dashed green;
   border-width: thick;
-
 }
