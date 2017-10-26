@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type='text/css' href="style/style.css">
     <meta charset="utf-8">
     <title>NFL Pick'Em</title>
     <link rel="stylesheet" type="text/css" href="style/styles.css">
@@ -19,8 +20,16 @@
         <input type="text" name="" value="" id='new-name'>
         <input type="submit">
       </form>
+      <form class="" id='login-form' method="get">
+        <label for="user-name">To login, enter name:</label>
+        <input type="text" name="" value="" id='user-name'>
+        <input type="submit">
+      </form>
     <div class="">
-      <h1 id='header'>Username</h1>
+
+      <h1 id='header'>No user, please sign in</h1>
+      <h3 id='win-counter'></h3><br>
+      <h4 id='win-percentage'></h4>
       <h2 id='week-header'>Week #</h2>
       <div class="btn-holder" id='btn-holder'>
         <button class="previous" style="vertical-align:middle" type="button" name="button" id='btn-prev'><span>Previous Week </span></button>

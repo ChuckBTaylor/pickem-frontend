@@ -15,14 +15,16 @@ class Week {
       const newGame = new Game(game)
       newGame.render()
     })
+
     User.getUserObject().activateChoices()
+
   }
 
 
 
   renderSubmit(form){
-    if(this.renderSubmitLogic()){
-      form.innerHTML = `<input class="pick-submit" type="submit">`
+    if(this.rend
+      form.innerHTML = `<input type="submit" class='terranceButton'>`
     }
   }
 
