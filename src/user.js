@@ -24,7 +24,7 @@ class User {
       })
       let percent = (this.wins / this.picks.length).toFixed(3)
 
-      document.getElementById(`win-percentage`).innerText = `Win Percentage: ${percent}%`
+      document.getElementById(`win-percentage`).innerText = `Win Rate: ${percent}`
     })
   }
 

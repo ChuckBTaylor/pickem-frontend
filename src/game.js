@@ -24,5 +24,9 @@ class Game {
       </div>`
 
     form.prepend(game)
+    if(this.winningTeam){
+      const div = document.getElementById(`team_${this.winningTeam}`).parentElement
+      div.className += " winning-team"
+    }
   }
 }
