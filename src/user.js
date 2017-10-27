@@ -24,7 +24,11 @@ class User {
       })
       let percent = (this.wins / this.picks.length).toFixed(3)
 
-      document.getElementById(`win-percentage`).innerText = `Win Rate: ${percent}`
+      if(!isNaN(percent)) {
+        document.getElementById(`win-percentage`).innerText = `Win Rate: ${percent}`
+      } else {
+        document.getElementById(`win-percentage`).innerText = "No wins"
+      }
     })
   }
 
@@ -144,6 +148,6 @@ class User {
 
 
   User.all = []
-  fetch(`http://localhost:3000/api/v1/usersby/Al`)
-  .then(res => res.json())
-  .then(json => User.userLogin(json.data))
+  // fetch(`http://localhost:3000/api/v1/usersby/Al`)
+  // .then(res => res.json())
+  // .then(json => User.userLogin(json.data))

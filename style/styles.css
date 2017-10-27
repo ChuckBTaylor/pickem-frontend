@@ -13,6 +13,7 @@ body {
 #pick-form {
   margin: auto;
   text-align: center;
+  width: 65%;
 }
 
 div{
@@ -174,6 +175,14 @@ div{
   float: right;
 }
 
+.center{
+  float: middle;
+}
+
+.left{
+  float: left;
+}
+
 
 .sidebyside {
   display: inline-block;
@@ -185,6 +194,7 @@ div{
 }
 
 div.winning-team{
-  border: dashed green;
+  border: dashed;
+  border-color: #50f442;
   border-width: thick;
 }

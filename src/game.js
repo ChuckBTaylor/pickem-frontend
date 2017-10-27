@@ -14,11 +14,12 @@ class Game {
 
     game.className = `matchup-box`
     game.innerHTML = `
-      <div class="away-team form-team">
+      <div class="away-team form-team left">
       <label for="team_${this.awayTeam.id}" ></label>
       <input type='radio' class='team-name radio-form' name="radio_game_${this.id}" value="${this.awayTeam.id}" id="team_${this.awayTeam.id}">${this.awayTeam.name}</input>
       </div>
-      <div class='home-team form-team'>
+      @
+      <div class='home-team form-team right'>
       <label for="team_${this.homeTeam.id}"></label>
       <input type='radio' class='team-name radio-form' name="radio_game_${this.id}" value="${this.homeTeam.id}" id="team_${this.homeTeam.id}">${this.homeTeam.name}</input>
       </div>`

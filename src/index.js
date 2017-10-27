@@ -21,9 +21,8 @@ function addAllEventListeners(){
   })
 
   form.addEventListener('click', function(ev){
-    if (ev.target.nodeName === "DIV"){
+    if (ev.target.nodeName === "DIV" && allowToMakeChanges()){
       divClickChangeEvent(ev)
-
     }
   })
 
@@ -140,4 +139,14 @@ function createTableRow(row, idx){
   cell2.innerHTML = row.name
   cell3.innerHTML = row.wins
   cell1.innerHTML = idx+1
+}
+
+function allowToMakeChanges(){
+  let thursday = getFirstGameDate()
+  thursday.setDate(thursday.getDate()+(7*(getWeekOnPage()-1)))
+  if (Date.now() < thursday) {
+    return true
+  } else {
+    return false
+  }
 }

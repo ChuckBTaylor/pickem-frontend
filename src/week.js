@@ -23,18 +23,9 @@ class Week {
 
 
   renderSubmit(form){
-    if(this.renderSubmitLogic()) {
+    // if(true){ //allows for any submission on any week
+    if(allowToMakeChanges()) {
       form.innerHTML = `<input type="submit" class='pick-submit'>`
-    }
-  }
-
-  renderSubmitLogic(){
-    let thursday = getFirstGameDate()
-    thursday.setDate(thursday.getDate()+(7*(this.weekNumber-1)))
-    if (Date.now() < thursday) {
-      return true
-    } else {
-      return false
     }
   }
 
