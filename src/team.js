@@ -4,7 +4,10 @@ class Team {
     this.id = teamObj.id
     this.color = teamObj['team-color']
     this.constructor.all.push(this)
+    this.record = teamObj.record
   }
+
+
 
   static findByName(name){
     return this.all.find(team => team.name === name)

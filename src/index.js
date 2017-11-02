@@ -2,7 +2,7 @@ window.onload = function(){
   setWeekOnPage(getCurrentWeek())
   getWeekFormData()
   buttonLogic()
-  getCurrentRanking()
+  const rankingTable = new RankingTable
   addAllEventListeners()
 }
 
@@ -121,25 +121,25 @@ function divClickChangeEvent(ev){
   inp.dispatchEvent(event)
 }
 
-function getCurrentRanking(){
-  fetch(`http://localhost:3000/api/v1/usersby/wins`)
-  .then(res => res.json())
-  .then(json => {
-    console.log(json);
-    Array.from(json).forEach((row, idx) => createTableRow(row, idx))
-  })
-}
-
-function createTableRow(row, idx){
-  const table = document.getElementById(`ranking-table`)
-  const newRow = table.insertRow(-1)
-  const cell1 = newRow.insertCell(0)
-  const cell2 = newRow.insertCell(1)
-  const cell3 = newRow.insertCell(2)
-  cell2.innerHTML = row.name
-  cell3.innerHTML = row.wins
-  cell1.innerHTML = idx+1
-}
+// function getCurrentRanking(){
+//   fetch(`http://localhost:3000/api/v1/usersby/wins`)
+//   .then(res => res.json())
+//   .then(json => {
+//     Array.from(json).forEach((row, idx) => createTableRow(row, idx))
+//   })
+// }
+//
+// function createTableRow(row, idx){
+//   const table = document.getElementById(`ranking-table`)
+//   const newRow = table.insertRow(-1)
+//   const cell1 = newRow.insertCell(0)
+//   const cell2 = newRow.insertCell(1)
+//   const cell3 = newRow.insertCell(2)
+//   const cell4 = newRow.insertCell(3)
+//   cell1.innerHTML = idx+1
+//   cell2.innerHTML = row.name
+//   cell4.innerHTML = row.wins
+// }
 
 function allowToMakeChanges(){
   let thursday = getFirstGameDate()

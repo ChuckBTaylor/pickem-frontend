@@ -22,15 +22,20 @@ class User {
         newPick.userId = this.id
         this.picks.push(newPick)
       })
-      let percent = (this.wins / this.picks.length).toFixed(3)
+      this.winsThisWeek()
 
-      if(!isNaN(percent)) {
-        document.getElementById(`win-percentage`).innerText = `Win Rate: ${percent}`
-      } else {
-        document.getElementById(`win-percentage`).innerText = "No wins"
-      }
     })
   }
+
+  winsThisWeek(){
+    const weekPicks = this.picks.filter(pick => {
+      return pick.weekNumber === getWeekOnPage()
+    })
+    const wins = weekPicks.filter(pick => {
+      return Game.find(pick.gameId).winningTeam === pick.guessId
+    })
+    return wins.length
+    }
 
   static clearAllBackgrounds(){
     const form = getForm()
@@ -131,7 +136,9 @@ class User {
   }
 
   static signUp(){
-    const name = JSON.stringify(document.getElementById(`new-name`).value)
+    const inp = document.getElementById(`new-name`)
+    const name = JSON.stringify(inp.value)
+    inp.value = ""
     fetch(`http://localhost:3000/api/v1/users`,
     {
       method: 'post',
