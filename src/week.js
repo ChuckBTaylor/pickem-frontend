@@ -48,7 +48,8 @@ class Week {
   }
 
   static fetchByWeek(weekNumber){
-    fetch(`https://infinite-caverns-16143.herokuapp.com/api/v1/weeks/${weekNumber}`)
+
+    fetch(`${BASE_URL}/weeks/${weekNumber}`)
     .then(res => res.json())
     .then(json => {
       const week = this.findOrCreateByObj(json.data.attributes)
