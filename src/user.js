@@ -1,3 +1,4 @@
+var BASE_URL = "https://infinite-caverns-16143.herokuapp.com/api/v1"
 class User {
   constructor(id, attributes = {}) {
     document.getElementById('pick-form').reset()
@@ -14,7 +15,7 @@ class User {
 
   //after new user load
   populateUserPicks(){
-    fetch(`http://localhost:3000/api/v1/users/${this.id}/picks/`)
+    fetch(`${BASE_URL}/users/${this.id}/picks/`)
     .then(res => res.json())
     .then(json => {
       json.data.forEach(dbPick => {
@@ -87,7 +88,7 @@ class User {
 
   postPicks(newPicks){
     const json = JSON.stringify(newPicks)
-    fetch(`http://localhost:3000/api/v1/users/${this.id}/picks/`, {
+    fetch(`${BASE_URL}/users/${this.id}/picks/`, {
       method: 'post',
       headers: {
         "Content-Type": 'application/json',
@@ -124,7 +125,7 @@ class User {
     const field = document.getElementById(`user-name`)
     const name = field.value
     field.value = ""
-    fetch(`http://localhost:3000/api/v1/usersby/${name}`)
+    fetch(`${BASE_URL}/usersby/${name}`)
     .then(res => res.json())
     .then(json => this.userLogin(json.data))
   }
@@ -139,7 +140,7 @@ class User {
     const inp = document.getElementById(`new-name`)
     const name = JSON.stringify(inp.value)
     inp.value = ""
-    fetch(`http://localhost:3000/api/v1/users`,
+    fetch(`${BASE_URL}/users`,
     {
       method: 'post',
       headers: {
@@ -155,6 +156,6 @@ class User {
 
 
   User.all = []
-  // fetch(`http://localhost:3000/api/v1/usersby/Al`)
+  // fetch(`${BASE_URL}/usersby/Al`)
   // .then(res => res.json())
   // .then(json => User.userLogin(json.data))

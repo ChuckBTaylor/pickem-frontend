@@ -1,3 +1,4 @@
+var BASE_URL = "https://infinite-caverns-16143.herokuapp.com/api/v1"
 class RankingTable {
   constructor() {
     this.fetchInfo()
@@ -51,11 +52,11 @@ class RankingTable {
 
 
   fetchInfo(){
-    fetch(`http://localhost:3000/api/v1/usersby/wins`)
+    fetch(`${BASE_URL}/usersby/wins`)
     .then(res => res.json())
     .then(json => {
       this.info = json
-      fetch(`http://localhost:3000/api/v1/weeks/userwins`)
+      fetch(`${BASE_URL}/weeks/userwins`)
       .then(res => res.json())
       .then(byWeek => {
         this.winsByWeek = byWeek

@@ -1,4 +1,6 @@
+var BASE_URL  = `https://infinite-caverns-16143.herokuapp.com/api/v1`
 class Week {
+
   constructor(weekObj) {
     this.weekNumber = weekObj['week-number']
     this.games = weekObj.games
@@ -46,7 +48,7 @@ class Week {
   }
 
   static fetchByWeek(weekNumber){
-    fetch(`http://localhost:3000/api/v1/weeks/${weekNumber}`)
+    fetch(`https://infinite-caverns-16143.herokuapp.com/api/v1/weeks/${weekNumber}`)
     .then(res => res.json())
     .then(json => {
       const week = this.findOrCreateByObj(json.data.attributes)
