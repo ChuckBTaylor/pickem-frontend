@@ -28,6 +28,8 @@ class RankingTable {
   }
 
   arrayOfUsersByWinsForWeek(weekNum){
+    console.log(this.winsByWeek, "this.winsByWeek");
+    console.log(weekNum, "weekNum");
     this.compileUsersToOneObject(Object.assign(...this.winsByWeek[weekNum]))
     return this.sortUsersForWeek()
   }

@@ -25,6 +25,7 @@ function addAllEventListeners(){
   form.addEventListener('click', function(ev){
     if (ev.target.nodeName === "DIV" && allowToMakeChanges()){
       divClickChangeEvent(ev)
+      clearConfirm()
     }
   })
 
@@ -121,6 +122,20 @@ function divClickChangeEvent(ev){
   const event = document.createEvent('HTMLEvents');
   event.initEvent('change', true, false);
   inp.dispatchEvent(event)
+}
+
+function showConfirm(){
+  const div = document.getElementById(`confirm-div`)
+  div.innerHTML = ""
+  div.innerHTML = "<p>Picks Submitted</p>"
+}
+
+function clearConfirm(){
+  const div = document.getElementById(`confirm-div`)
+  console.log(div);
+  if(div){
+    div.innerHTML = ""
+  }
 }
 
 
